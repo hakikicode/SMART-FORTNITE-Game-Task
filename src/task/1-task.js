@@ -1,24 +1,62 @@
+import axios from "axios";
 import { namespaceWrapper } from "@_koii/namespace-wrapper";
 
-export async function task(roundNumber) {
+// Fortnite API Configuration
+const FORTNITE_API_BASE = "https://fortnite-api.com/v2";
+const API_KEY = process.env.FORTNITE_API_KEY;
+
+// Preprocessing Fortnite Leaderboard Data
+function preprocessFortniteData(rawData) {
+  return rawData.map((player) => ({
+    gameName: "Fortnite",
+    playerName: player.name || "unknown",
+    score: player.stats?.kills || 0, // Use 'kills' as the score
+    timestamp: new Date().toISOString(),
+    metadata: {
+      platform: player.platform || "unknown",
+      mode: player.mode || "Battle Royale",
+      region: player.region || "global",
+      matchId: player.matchId || "unknown",
+    },
+  }));
+}
+
+// Fetch Fortnite Leaderboard Data
+async function fetchFortniteLeaderboard() {
   try {
-    console.log(`Executing task for round ${roundNumber}`);
+    const response = await axios.get(`${FORTNITE_API_BASE}/leaderboards`, {
+      headers: { Authorization: `Bearer ${API_KEY}` },
+    });
 
-    // Fetch game data, e.g., player scores
-    const gameData = await fetchGameData();
-
-    // Store data for submission and audit
-    await namespaceWrapper.storeSet(`round_${roundNumber}_gameData`, JSON.stringify(gameData));
-    console.log("Game data stored for submission:", gameData);
+    if (response.data && response.data.data) {
+      return preprocessFortniteData(response.data.data);
+    } else {
+      throw new Error("Invalid response structure from Fortnite API");
+    }
   } catch (error) {
-    console.error("Error in task execution:", error);
+    console.error("Error fetching Fortnite leaderboard:", error);
+    return [];
   }
 }
 
-// Simulated game data function
-async function fetchGameData() {
-  return {
-    TG_Username: "hakikitech",
-    PlayerScore: Math.floor(Math.random() * 1000), // Simulated score
-  };
+// Main Task Logic
+export async function task(roundNumber) {
+  try {
+    console.log(`Executing SMART task for round ${roundNumber}...`);
+
+    // Fetch and preprocess Fortnite leaderboard data
+    const leaderboardData = await fetchFortniteLeaderboard();
+
+    if (leaderboardData.length === 0) {
+      console.error("No leaderboard data fetched.");
+      return;
+    }
+
+    // Store the processed data
+    const storageKey = `round_${roundNumber}_fortniteLeaderboard`;
+    await namespaceWrapper.storeSet(storageKey, JSON.stringify(leaderboardData));
+    console.log("Fortnite leaderboard data stored successfully:", leaderboardData);
+  } catch (error) {
+    console.error("Error executing SMART task:", error);
+  }
 }
