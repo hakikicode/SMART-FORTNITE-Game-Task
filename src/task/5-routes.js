@@ -1,16 +1,10 @@
 import { namespaceWrapper, app } from "@_koii/namespace-wrapper";
 
 export function routes() {
-  /**
-   *
-   * Define all your custom routes here
-   *
-   */
-
-  // Example route
-  app.get("/value", async (_req, res) => {
-    const value = await namespaceWrapper.storeGet("value");
-    console.log("value", value);
-    res.status(200).json({ value: value });
+  // Route for retrieving leaderboard data
+  app.get("/fortnite-leaderboard/:roundNumber", async (req, res) => {
+    const roundNumber = req.params.roundNumber;
+    const leaderboard = await namespaceWrapper.storeGet(`round_${roundNumber}_fortniteLeaderboard`);
+    res.status(200).json({ leaderboard: JSON.parse(leaderboard || "{}") });
   });
 }
