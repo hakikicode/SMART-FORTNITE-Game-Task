@@ -1,38 +1,38 @@
-# SMART Task
+# SMART Fortnite Game Task
 
 ### Overview
-SMART Task is an innovative GameFi mechanism on the Koii Network designed to validate and reward user engagement based on gameplay data. By running this task, participants actively contribute to the network while earning rewards in SMART tokens. This task encourages fair participation and authentic engagement within the GameFi ecosystem.
+The SMART Fortnite Game Task is a GameFi-focused mechanism on the Koii Network, enabling participants to validate Fortnite leaderboard data and earn rewards in **SMART tokens**. By running this task, users contribute to a transparent and fair gaming ecosystem while enjoying decentralized rewards.
 
 ### Objectives
-- **Data Validation:** Validate user gameplay data, including scores, game activity, and achievements.
-- **Reward Distribution:** Allocate SMART tokens based on verified gameplay actions.
-- **Community Growth:** Promote ecosystem engagement, increasing awareness and involvement in the GameFi sector.
+- **Leaderboard Validation:** Verify Fortnite leaderboard data, including player scores and match activity.
+- **Reward Distribution:** Earn SMART tokens for accurate validations of gameplay data.
+- **Ecosystem Growth:** Enhance engagement in the decentralized GameFi ecosystem.
 
 ### Task Details
-- **Task ID:** `check on koii node`
+- **Task ID:** Available on Koii Node
 - **Platform:** Koii Network Node
-- **Network Requirements:** CPU: 4-core | RAM: 5 GB | Storage: 5 GB
-- **Reward Structure:** Based on TG_USERNAME and PlayerScore for successful validation submissions.
+- **Requirements:** CPU: 4-core | RAM: 5 GB | Storage: 5 GB
+- **Reward Structure:** Based on validated Fortnite player scores.
 - **Submission Frequency:** Every 1500 slots (~10 minutes)
 
-### Steps for Running SMART Task
-1. **Node Setup:** Download the Koii Node and set up your account (ensure enough resources).
-2. **Add SMART Task:** Add SMART Task on your Koii node by searching its Task ID or manually adding it with the SMART Task ID.
-3. **Submit Gameplay Data:** SMART Task automatically collects data from participants.
-4. **Validation & Rewards:** Data is validated, and successful entries receive SMART tokens.
+### Steps for Running SMART Fortnite Game Task
+1. **Node Setup:** Set up your Koii Node with sufficient resources.
+2. **Add SMART Task:** Add the SMART Fortnite Game Task using its Task ID on the Koii Node interface.
+3. **Submit Data:** Fetch and validate Fortnite leaderboard data automatically via the task.
+4. **Earn Rewards:** Validations are rewarded with SMART tokens upon passing audit checks.
 
 ### Rewards
-Participants who validate gameplay data and pass audit checks are rewarded with SMART tokens. **PlayerScore** and **TG_USERNAME** are crucial for reward calculations, ensuring each participant’s task is based on genuine engagement.
+Participants validating Fortnite data are rewarded in SMART tokens. Player scores are the key metric for determining token distribution, ensuring fairness and genuine engagement.
 
 ### Requirements
-- **Telegram Username**: Required for identity verification and reward distribution.
-- **Minimum Stake**: 0.1 Koii token for task participation.
-  
+- **Minimum Stake:** 0.1 Koii token for task participation.
+- **Koii Node:** Required to run and validate the task.
+
 ### FAQs
-**How do I start running the SMART Task?**  
-Simply add the SMART Task to your Koii Node, verify gameplay data, and ensure active participation.
+**How do I start running the SMART Fortnite Game Task?**  
+Add the task to your Koii Node, verify Fortnite leaderboard data, and ensure active participation.
 
 **What is PlayerScore?**  
-It’s a metric reflecting user engagement and gameplay achievements within the ecosystem.
+It’s the validated score of a Fortnite player, used as the primary metric for reward calculation.
 
-For additional details, visit the [SMART Task repository](https://github.com/hakikicode/SMART-Task) or contact support via social media.
+For more information, visit the [SMART Task repository](https://github.com/hakikicode/SMART-Task) or contact us via social media.
