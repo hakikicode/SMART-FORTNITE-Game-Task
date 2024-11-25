@@ -35,4 +35,4 @@ Add the task to your Koii Node, verify Fortnite leaderboard data, and ensure act
 **What is PlayerScore?**  
 It’s the validated score of a Fortnite player, used as the primary metric for reward calculation.
 
-For more information, visit the [SMART Task repository](https://github.com/hakikicode/SMART-Task) or contact us via social media.
+For more information, visit the [SMART Task repository](https://github.com/hakikicode/SMART-FORTNITE-Game-Task) or contact us via social media.
