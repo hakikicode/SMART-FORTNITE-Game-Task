@@ -5,10 +5,10 @@
 
 ## Task Name ##
 # Maximum 24 characters.
-task_name: "SMART Task"
+task_name: "SMART Fortnite Task"
 
 ## Task Author ##
-author: "Smart Open Network"
+author: "SMART Open Network"
 
 # Task Description Markdown ##
 # If you specify a markdown file, the description field will be ignored.
@@ -17,11 +17,11 @@ markdownDescriptionPath: "./TaskDescription.md"
 
 ## Task Description ##
 # Ignored if you specify a markdown file.
-description: "check and validate games data."
+description: "Validate Fortnite leaderboard data and earn rewards in SMART tokens."
 
 ## Repository URL ##
 # Must be public for whitelisted tasks.
-repositoryUrl: "https://github.com/hakikicode/SMART-Task"
+repositoryUrl: "https://github.com/hakikicode/SMART-FORTNITE-Game-Task"
 
 ## Image URL ##
 # 230x86 pixels.
@@ -99,13 +99,10 @@ requirementsTags:
     value: "5 GB"
   - type: STORAGE
     value: "5 GB"
-  - type: TASK_VARIABLE
-    value: "TG_USERNAME"
-    description: "add your telegram username with or without @."
 
 ## Tags ##
 # See https://www.koii.network/docs/develop/command-line-tool/create-task-cli/create-task#tags for available tag options.
-tags: ["Data Gathering", "Web Crawling"]
+tags: ["Data Validation", "Gaming"]
 
 # Environment ##
 # TEST or PRODUCTION
@@ -115,7 +112,7 @@ environment: "PRODUCTION"
 #################################### FOR UPDATING TASKS ONLY ####################################
 
 ## Old Task ID ##
-task_id: "2cmwQeXPjLDqc3UJ5q72otxySsvXxYDqYzNTeWMbuWx5"
+task_id: ""
 
 ## Migration Description ##
-migrationDescription: "This task rewards users based on validated Telegram game data, including fields like TG_USERNAME and PlayerScore. The validation process ensures that rewards correspond to accurate gameplay data submitted through Koii's decentralized node network."
+migrationDescription: "This task rewards users for validating Fortnite leaderboard data, including player scores and metadata, to ensure accurate submissions through Koii's decentralized network."
