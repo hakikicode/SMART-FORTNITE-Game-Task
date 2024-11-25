@@ -5,7 +5,11 @@ export async function audit(submission, roundNumber, submitterKey) {
 
   try {
     const parsedData = JSON.parse(submission);
-    const isValid = parsedData.PlayerScore > 0;
+
+    // Validate data: Ensure all players have valid scores and names
+    const isValid = parsedData.every(
+      (entry) => entry.score > 0 && entry.playerName !== "unknown"
+    );
 
     console.log("Audit result:", isValid ? "Valid" : "Invalid");
     return isValid;
