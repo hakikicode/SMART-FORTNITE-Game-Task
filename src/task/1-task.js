@@ -3,7 +3,7 @@ import { namespaceWrapper } from "@_koii/namespace-wrapper";
 
 // Fortnite API Configuration
 const FORTNITE_API_BASE = "https://fortnite-api.com/v2";
-const API_KEY = process.env.FORTNITE_API_KEY;
+const API_KEY = process.env.FORTNITE_API_KEY || "b080eff6-1899-4f48-a52c-b956824ed3eb";
 
 // Preprocessing Fortnite Leaderboard Data
 function preprocessFortniteData(rawData) {

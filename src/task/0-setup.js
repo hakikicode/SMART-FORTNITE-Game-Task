@@ -1,5 +1,7 @@
+require('dotenv').config();
 export async function setup() {
   console.log("CUSTOM SETUP: Verifying environment and API readiness");
+  console.log("FORTNITE_API_KEY:", process.env.FORTNITE_API_KEY);
 
   // Check API Key availability
   if (!process.env.FORTNITE_API_KEY) {

@@ -25,7 +25,7 @@ The SMART Fortnite Game Task is a GameFi-focused mechanism on the Koii Network, 
 Participants validating Fortnite data are rewarded in SMART tokens. Player scores are the key metric for determining token distribution, ensuring fairness and genuine engagement.
 
 ### Requirements
-- **Minimum Stake:** 0.1 Koii token for task participation.
+- **Minimum Stake:** 1.9 SMART token for task participation.
 - **Koii Node:** Required to run and validate the task.
 
 ### FAQs
