@@ -1,4 +1,10 @@
 export async function setup() {
-  // define any steps that must be executed before the task starts
-  console.log("CUSTOM SETUP");
+  console.log("CUSTOM SETUP: Verifying environment and API readiness");
+
+  // Check API Key availability
+  if (!process.env.FORTNITE_API_KEY) {
+    throw new Error("Missing FORTNITE_API_KEY environment variable");
+  }
+
+  console.log("Setup complete. API key verified.");
 }
