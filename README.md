@@ -57,16 +57,20 @@ Accurate validations are rewarded with **SMART tokens**.
 ### Requirements
 1. A **Koii Node** to participate in tasks.
 2. A supported **crypto wallet** to store and manage **SMART tokens**.
+3. Access to the **Fortnite API** key for leaderboard data.
 
 ### Steps to Participate
 
 1. **Set up a Koii Node**:
    - Follow [Koii Network](https://koii.network/) instructions to install and run your node.
 
-2. **Run the SMART Task**:
+2. **Obtain a Fortnite API Key**:
+   - Visit the [Fortnite API documentation](https://fortnite-api.com/) to request an API key for accessing leaderboard data.
+
+3. **Run the SMART Task**:
    - Execute the task script for the current round to fetch, validate, and submit leaderboard data.
 
-3. **Start Earning**:
+4. **Start Earning**:
    - Earn **SMART tokens** for completing tasks and contributing to the decentralized network.
 
 ---
