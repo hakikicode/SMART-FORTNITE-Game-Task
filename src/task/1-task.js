@@ -73,8 +73,9 @@ export async function task(roundNumber) {
 
     // Generate hash and check for duplicates
     const playlistsHash = hashData(playlistsData);
-    const storedHash = await namespaceWrapper.storeGet(`round_${roundNumber}_playlistsHash`);
-    if (storedHash === playlistsHash) {
+    const existingHashes = JSON.parse(await namespaceWrapper.storeGet(`round_${roundNumber}_hashes`) || "[]");
+
+    if (existingHashes.includes(playlistsHash)) {
       console.warn("Duplicate data detected for this round. Skipping storage.");
       return;
     }
@@ -82,7 +83,11 @@ export async function task(roundNumber) {
     // Store the processed data and hash
     const storageKey = `round_${roundNumber}_fortnitePlaylists`;
     await namespaceWrapper.storeSet(storageKey, JSON.stringify(playlistsData));
-    await namespaceWrapper.storeSet(`round_${roundNumber}_playlistsHash`, playlistsHash);
+
+    // Update hash record for the round
+    existingHashes.push(playlistsHash);
+    await namespaceWrapper.storeSet(`round_${roundNumber}_hashes`, JSON.stringify(existingHashes));
+
     console.log("Fortnite playlists data stored successfully:", playlistsData);
   } catch (error) {
     console.error("Error executing SMART task:", error);
