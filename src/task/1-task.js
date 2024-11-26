@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 dotenv.config();
 import axios from "axios";
+import crypto from "crypto"; // For hashing
 import { namespaceWrapper } from "@_koii/namespace-wrapper";
 
 // Fortnite API Configuration
@@ -20,7 +21,7 @@ async function fetchFortnitePlaylists() {
 
   try {
     const response = await axios.get(`${FORTNITE_API_BASE}/playlists`, {
-      headers: { Authorization: API_KEY },
+      headers: { Authorization: `Bearer ${API_KEY}` },
     });
 
     if (response.data && response.data.data) {
@@ -34,7 +35,7 @@ async function fetchFortnitePlaylists() {
   }
 }
 
-// Preprocessing Fortnite Playlist Data
+// Preprocess Fortnite Playlist Data
 function preprocessFortnitePlaylists(rawData) {
   return rawData.map((playlist) => ({
     gameName: "Fortnite",
@@ -51,12 +52,17 @@ function preprocessFortnitePlaylists(rawData) {
   }));
 }
 
+// Generate Hash for Duplicate Detection
+function hashData(data) {
+  return crypto.createHash("sha256").update(JSON.stringify(data)).digest("hex");
+}
+
 // Main Task Logic
 export async function task(roundNumber) {
   try {
     console.log(`Executing SMART task for round ${roundNumber}...`);
 
-    // Fetch and preprocess Fortnite playlists data
+    // Fetch playlists and preprocess
     const playlistsData = await fetchFortnitePlaylists();
 
     if (playlistsData.length === 0) {
@@ -65,9 +71,18 @@ export async function task(roundNumber) {
       return;
     }
 
-    // Store the processed data
+    // Generate hash and check for duplicates
+    const playlistsHash = hashData(playlistsData);
+    const storedHash = await namespaceWrapper.storeGet(`round_${roundNumber}_playlistsHash`);
+    if (storedHash === playlistsHash) {
+      console.warn("Duplicate data detected for this round. Skipping storage.");
+      return;
+    }
+
+    // Store the processed data and hash
     const storageKey = `round_${roundNumber}_fortnitePlaylists`;
     await namespaceWrapper.storeSet(storageKey, JSON.stringify(playlistsData));
+    await namespaceWrapper.storeSet(`round_${roundNumber}_playlistsHash`, playlistsHash);
     console.log("Fortnite playlists data stored successfully:", playlistsData);
   } catch (error) {
     console.error("Error executing SMART task:", error);

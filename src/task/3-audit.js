@@ -4,12 +4,12 @@ export async function audit(submission, roundNumber, submitterKey) {
   console.log(`Auditing submission for round ${roundNumber} from ${submitterKey}`);
 
   try {
-    const parsedData = JSON.parse(submission);
+    const storedData = await namespaceWrapper.storeGet(`round_${roundNumber}_fortnitePlaylists`);
+    const parsedStoredData = JSON.parse(storedData || "[]");
+    const parsedSubmission = JSON.parse(submission);
 
-    // Validate data: Ensure all players have valid scores and names
-    const isValid = parsedData.every(
-      (entry) => entry.score > 0 && entry.playerName !== "unknown"
-    );
+    // Ensure submitted data matches stored data
+    const isValid = JSON.stringify(parsedStoredData) === JSON.stringify(parsedSubmission);
 
     console.log("Audit result:", isValid ? "Valid" : "Invalid");
     return isValid;
