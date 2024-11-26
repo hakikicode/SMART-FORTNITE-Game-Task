@@ -90,8 +90,8 @@ allowed_failed_distributions: 3
 # See https://www.koii.network/docs/develop/command-line-tool/create-task-cli/create-task#space for calculation details.
 space: 2.0
 
-## Requirement Tags (Updated) ##
-# This section allows task runners to provide necessary variables.
+## Requirement Tags (Optional) ##
+# To add more global variables and task variables, please refer to the type, value, description format shown below.
 requirementsTags:
   - type: CPU
     value: "4-core"
@@ -99,9 +99,6 @@ requirementsTags:
     value: "5 GB"
   - type: STORAGE
     value: "5 GB"
-  - type: TASK_VARIABLE
-    value: "FORTNITE_API_KEY"
-    description: "API key for accessing Fortnite leaderboard data. Obtain it from https://fortnite-api.com/. Ensure the key is active and has access to the required endpoints."
 
 ## Tags ##
 # See https://www.koii.network/docs/develop/command-line-tool/create-task-cli/create-task#tags for available tag options.

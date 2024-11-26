@@ -4,44 +4,51 @@ import axios from "axios";
 import { namespaceWrapper } from "@_koii/namespace-wrapper";
 
 // Fortnite API Configuration
-const FORTNITE_API_BASE = "https://fortnite-api.com/v2";
+const FORTNITE_API_BASE = "https://fortnite-api.com/v1";
 const API_KEY = process.env.FORTNITE_API_KEY;
+
 if (!API_KEY) {
-  throw new Error("Missing FORTNITE_API_KEY environment variable.");
+  console.warn("FORTNITE_API_KEY is missing. Skipping Fortnite integration.");
 }
 
-// Preprocessing Fortnite Leaderboard Data
-function preprocessFortniteData(rawData) {
-  return rawData.map((player) => ({
-    gameName: "Fortnite",
-    playerName: player.name || "unknown",
-    score: player.stats?.kills || 0, // Use 'kills' as the score
-    timestamp: new Date().toISOString(),
-    metadata: {
-      platform: player.platform || "unknown",
-      mode: player.mode || "Battle Royale",
-      region: player.region || "global",
-      matchId: player.matchId || "unknown",
-    },
-  }));
-}
+// Fetch Fortnite Playlists Data
+async function fetchFortnitePlaylists() {
+  if (!API_KEY) {
+    console.warn("Skipping playlist fetch due to missing API key.");
+    return [];
+  }
 
-// Fetch Fortnite Leaderboard Data
-async function fetchFortniteLeaderboard() {
   try {
-    const response = await axios.get(`${FORTNITE_API_BASE}/leaderboards`, {
-      headers: { Authorization: `Bearer ${API_KEY}` },
+    const response = await axios.get(`${FORTNITE_API_BASE}/playlists`, {
+      headers: { Authorization: API_KEY },
     });
 
     if (response.data && response.data.data) {
-      return preprocessFortniteData(response.data.data);
+      return preprocessFortnitePlaylists(response.data.data);
     } else {
       throw new Error("Invalid response structure from Fortnite API");
     }
   } catch (error) {
-    console.error("Error fetching Fortnite leaderboard:", error);
+    console.error("Error fetching Fortnite playlists:", error.response?.data || error.message);
     return [];
   }
+}
+
+// Preprocessing Fortnite Playlist Data
+function preprocessFortnitePlaylists(rawData) {
+  return rawData.map((playlist) => ({
+    gameName: "Fortnite",
+    playlistName: playlist?.name || "Unknown",
+    description: playlist?.description || "No description available",
+    isActive: playlist?.isActive || false,
+    gameType: playlist?.gameType || "Unknown",
+    maxPlayers: playlist?.maxPlayers || 0,
+    timestamp: new Date().toISOString(),
+    metadata: {
+      category: playlist?.category || "General",
+      subName: playlist?.subName || "N/A",
+    },
+  }));
 }
 
 // Main Task Logic
@@ -49,18 +56,19 @@ export async function task(roundNumber) {
   try {
     console.log(`Executing SMART task for round ${roundNumber}...`);
 
-    // Fetch and preprocess Fortnite leaderboard data
-    const leaderboardData = await fetchFortniteLeaderboard();
+    // Fetch and preprocess Fortnite playlists data
+    const playlistsData = await fetchFortnitePlaylists();
 
-    if (leaderboardData.length === 0) {
-      console.error("No leaderboard data fetched.");
+    if (playlistsData.length === 0) {
+      console.warn("No playlists data fetched. Storing an empty array.");
+      await namespaceWrapper.storeSet(`round_${roundNumber}_fortnitePlaylists`, JSON.stringify([]));
       return;
     }
 
     // Store the processed data
-    const storageKey = `round_${roundNumber}_fortniteLeaderboard`;
-    await namespaceWrapper.storeSet(storageKey, JSON.stringify(leaderboardData));
-    console.log("Fortnite leaderboard data stored successfully:", leaderboardData);
+    const storageKey = `round_${roundNumber}_fortnitePlaylists`;
+    await namespaceWrapper.storeSet(storageKey, JSON.stringify(playlistsData));
+    console.log("Fortnite playlists data stored successfully:", playlistsData);
   } catch (error) {
     console.error("Error executing SMART task:", error);
   }
