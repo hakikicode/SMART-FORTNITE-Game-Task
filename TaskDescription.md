@@ -1,10 +1,10 @@
 # SMART Fortnite Game Task
 
 ### Overview
-The SMART Fortnite Game Task is a GameFi-focused mechanism on the Koii Network, enabling participants to validate Fortnite leaderboard data and earn rewards in **SMART tokens**. By running this task, users contribute to a transparent and fair gaming ecosystem while enjoying decentralized rewards.
+The SMART Fortnite Game Task is a GameFi-focused mechanism on the Koii Network, enabling participants to validate Fortnite playlists data and earn rewards in **SMART tokens**. By running this task, users contribute to a transparent and fair gaming ecosystem while enjoying decentralized rewards.
 
 ### Objectives
-- **Leaderboard Validation:** Verify Fortnite leaderboard data, including player scores and match activity.
+- **Playlists Validation:** Verify Fortnite playlists data, including player scores and match activity.
 - **Reward Distribution:** Earn SMART tokens for accurate validations of gameplay data.
 - **Ecosystem Growth:** Enhance engagement in the decentralized GameFi ecosystem.
 
@@ -18,7 +18,7 @@ The SMART Fortnite Game Task is a GameFi-focused mechanism on the Koii Network, 
 ### Steps for Running SMART Fortnite Game Task
 1. **Node Setup:** Set up your Koii Node with sufficient resources.
 2. **Add SMART Task:** Add the SMART Fortnite Game Task using its Task ID on the Koii Node interface.
-3. **Submit Data:** Fetch and validate Fortnite leaderboard data automatically via the task.
+3. **Submit Data:** Fetch and validate Fortnite playlists data automatically via the task.
 4. **Earn Rewards:** Validations are rewarded with SMART tokens upon passing audit checks.
 
 ### Rewards
@@ -30,7 +30,7 @@ Participants validating Fortnite data are rewarded in SMART tokens. Player score
 
 ### FAQs
 **How do I start running the SMART Fortnite Game Task?**  
-Add the task to your Koii Node, verify Fortnite leaderboard data, and ensure active participation.
+Add the task to your Koii Node, verify Fortnite playlists data, and ensure active participation.
 
 **What is PlayerScore?**  
 It’s the validated score of a Fortnite player, used as the primary metric for reward calculation.

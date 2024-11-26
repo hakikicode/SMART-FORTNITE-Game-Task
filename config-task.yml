@@ -17,7 +17,7 @@ markdownDescriptionPath: "./TaskDescription.md"
 
 ## Task Description ##
 # Ignored if you specify a markdown file.
-description: "Validate Fortnite leaderboard data and earn rewards in SMART tokens."
+description: "Validate Fortnite playlists data and earn rewards in SMART tokens."
 
 ## Repository URL ##
 # Must be public for whitelisted tasks.
@@ -112,7 +112,7 @@ environment: "PRODUCTION"
 #################################### FOR UPDATING TASKS ONLY ####################################
 
 ## Old Task ID ##
-task_id: "6VQ5hPYHLhu1iKZmpeG2usYXQG9LaMcYUXyve6pT3uPy"
+task_id: "6fs5afG2rdSLj6pbJVbkNHqGcszViEPJVGPts13eNm9x"
 
 ## Migration Description ##
-migrationDescription: "This task rewards users for validating Fortnite leaderboard data, including player scores and metadata, to ensure accurate submissions through Koii's decentralized network."
+migrationDescription: "This task rewards users for validating Fortnite playlists data, including player scores and metadata, to ensure accurate submissions through Koii's decentralized network."

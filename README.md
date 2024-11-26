@@ -1,6 +1,6 @@
 # SMART Fortnite Games Task on the Koii Network
 
-**SMART Fortnite Games Task** integrates the principles of the **SMART Open Network** with a gaming twist, enabling users to validate Fortnite leaderboard data, earn rewards in **SMART tokens**, and contribute to the decentralized ecosystem.
+**SMART Fortnite Games Task** integrates the principles of the **SMART Open Network** with a gaming twist, enabling users to validate Fortnite playlists data, earn rewards in **SMART tokens**, and contribute to the decentralized ecosystem.
 
 ---
 
@@ -8,9 +8,9 @@
 
 ### What is SMART Fortnite Games Task?
 
-A **SMART Task** focused on validating Fortnite leaderboard data. Users participate by:
+A **SMART Task** focused on validating Fortnite playlists data. Users participate by:
 
-- **Fetching and verifying Fortnite leaderboard scores.**
+- **Fetching and verifying Fortnite playlists scores.**
 - **Contributing to decentralized task validation on the Koii Network.**
 - **Earning SMART tokens** for their participation and accuracy.
 
@@ -18,8 +18,8 @@ A **SMART Task** focused on validating Fortnite leaderboard data. Users particip
 
 ## Key Features
 
-### Fortnite Leaderboard Validation:
-- Retrieve live leaderboard data for Fortnite using open APIs.
+### Fortnite Playlists Validation:
+- Retrieve live playlists data for Fortnite using open APIs.
 - Validate the correctness of submitted scores for accuracy and fairness.
 
 ### SMART Tokens:
@@ -35,12 +35,12 @@ A **SMART Task** focused on validating Fortnite leaderboard data. Users particip
 ## How SMART Fortnite Games Task Works
 
 ### 1. Task Setup
-Participants set up their **Koii Node** to begin receiving tasks. The task involves fetching Fortnite leaderboard data, validating it, and earning rewards.
+Participants set up their **Koii Node** to begin receiving tasks. The task involves fetching Fortnite playlists data, validating it, and earning rewards.
 
 ### 2. Task Workflow
 
-#### a. Fetch Leaderboard Data:
-The SMART Task fetches leaderboard data from Fortnite's open API during each round.
+#### a. Fetch Playlists Data:
+The SMART Task fetches playlists data from Fortnite's open API during each round.
 
 #### b. Validate Data:
 Participants audit the data:
@@ -64,7 +64,7 @@ Accurate validations are rewarded with **SMART tokens**.
    - Follow [Koii Network](https://koii.network/) instructions to install and run your node.
 
 2. **Run the SMART Task**:
-   - Execute the task script for the current round to fetch, validate, and submit leaderboard data.
+   - Execute the task script for the current round to fetch, validate, and submit playlists data.
 
 3. **Start Earning**:
    - Earn **SMART tokens** for completing tasks and contributing to the decentralized network.
