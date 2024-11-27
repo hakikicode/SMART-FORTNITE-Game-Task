@@ -5,7 +5,7 @@
 
 ## Task Name ##
 # Maximum 24 characters.
-task_name: "SMART Fortnite Task"
+task_name: "SMART Fortnite Playlists Task"
 
 ## Task Author ##
 author: "SMART Open Network"
@@ -112,7 +112,7 @@ environment: "PRODUCTION"
 #################################### FOR UPDATING TASKS ONLY ####################################
 
 ## Old Task ID ##
-task_id: "6fs5afG2rdSLj6pbJVbkNHqGcszViEPJVGPts13eNm9x"
+task_id: ""
 
 ## Migration Description ##
 migrationDescription: "This task rewards users for validating Fortnite playlists data, including player scores and metadata, to ensure accurate submissions through Koii's decentralized network."
