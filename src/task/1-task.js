@@ -57,13 +57,26 @@ function hashData(data) {
   return crypto.createHash("sha256").update(JSON.stringify(data)).digest("hex");
 }
 
+// Deduplicate Data
+function deduplicateData(data) {
+  const seen = new Set();
+  return data.filter((item) => {
+    const serialized = JSON.stringify(item);
+    if (seen.has(serialized)) {
+      return false; // Duplicate found, skip
+    }
+    seen.add(serialized);
+    return true;
+  });
+}
+
 // Main Task Logic
 export async function task(roundNumber) {
   try {
     console.log(`Executing SMART task for round ${roundNumber}...`);
 
     // Fetch playlists and preprocess
-    const playlistsData = await fetchFortnitePlaylists();
+    let playlistsData = await fetchFortnitePlaylists();
 
     if (playlistsData.length === 0) {
       console.warn("No playlists data fetched. Storing an empty array.");
@@ -71,20 +84,22 @@ export async function task(roundNumber) {
       return;
     }
 
-    // Generate hash and check for duplicates
+    // Deduplicate the data
+    playlistsData = deduplicateData(playlistsData);
+
+    // Generate hash for deduplicated data
     const playlistsHash = hashData(playlistsData);
     const existingHashes = JSON.parse(await namespaceWrapper.storeGet(`round_${roundNumber}_hashes`) || "[]");
 
+    // Check for duplicates
     if (existingHashes.includes(playlistsHash)) {
       console.warn("Duplicate data detected for this round. Skipping storage.");
       return;
     }
 
-    // Store the processed data and hash
+    // Store the processed data and update hash record
     const storageKey = `round_${roundNumber}_fortnitePlaylists`;
     await namespaceWrapper.storeSet(storageKey, JSON.stringify(playlistsData));
-
-    // Update hash record for the round
     existingHashes.push(playlistsHash);
     await namespaceWrapper.storeSet(`round_${roundNumber}_hashes`, JSON.stringify(existingHashes));
 
