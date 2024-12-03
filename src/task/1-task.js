@@ -59,13 +59,13 @@ function hashData(data) {
 
 // Deduplicate Data
 function deduplicateData(data) {
-  const seen = new Set();
+  const seenHashes = new Set();
   return data.filter((item) => {
-    const serialized = JSON.stringify(item);
-    if (seen.has(serialized)) {
+    const itemHash = hashData(item);
+    if (seenHashes.has(itemHash)) {
       return false; // Duplicate found, skip
     }
-    seen.add(serialized);
+    seenHashes.add(itemHash);
     return true;
   });
 }
